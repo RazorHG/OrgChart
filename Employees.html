@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html >
+	<head ng-controller="TemplateCtrl">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+	<title>Systems in Motion Organization Chart: {{page}}</title>
+	</head>
+	<body>
+		<div ng-app="Template" ng-controller="TemplateCtrl">
+			<h1>Systems in Motion Organization Chart: {{heading}}</h1>
+			<ul>
+			<li ng-repeat="tab in tabs">
+				<a href="#" ng-click="setPageState(tab)">{{tab.name}}</a>
+			</li>
+			</ul>
+		</div>
+	<div ng-app="Employee" ng-controller="EmployeeCtrl" >		   
+		 <div id="form-title" class="form-title field">
+			  <h2>
+				   Add An Employee
+			  </h2>
+		 </div>
+		  
+		  
+		<form ng-show="isCreating" role="form" ng-submit="createEmployee(newEmployee)" novalidate>
+			<div id="field1-container">
+				<div>
+					<label for="newFirstName">First Name</label>
+					<input type="text" id="newFirstName" required="required">
+				</div>
+				<div>
+					<label for="newLastName">Last Name</label>
+					<input type="text" id="newLastName" required="required">
+				</div>
+				<div>
+					<label for="newMiddleInitial">Middle Initial</label>
+					<input type="text" id="newMiddleInitial" maxlength="1">
+				</div>
+				<div>
+					<label for="newDepartment">Department</label>
+					<select id="newDepartment" required="required">
+					<option id="field4-1" value="Option 1">
+						 Option 1
+					</option>
+					</select>
+				</div>
+				<div>
+					<label for="newSkype">Email</label>
+					<input type="text" id="newSkype" required="required">
+				</div>
+				<div>
+					<label for="newEmail">Skype</label>
+					<input type="text" id="newEmail" required="required">
+				</div>
+				</div>		   
+				<div id="form-submit">
+				<input type="submit" value="Submit">
+			</div>
+
+				<div id="form-cancel">
+				<input type="button" ng-click="cancelCreating()" value="cancel">
+				</div>
+		</form>
+	</div>
+		
+	</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>	
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+<script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
+<script src="webpages.js"></script>
+<script src="Employee.js"></script>
+</html>

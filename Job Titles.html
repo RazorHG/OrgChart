@@ -1,22 +1,63 @@
 <!DOCTYPE html>
-<html ng-app="Template">
-	<head ng-controller="TemplateCtrl">
+<html >
+	<head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css">
-	<title>Systems in Motion Organization Chart: {{page}}</title>
+	<title>Systems in Motion Organization Chart: </title>
 	</head>
-	<body ng-controller="TemplateCtrl">
-		<h1>Systems in Motion Organization Chart: {{heading}}</h1>
-		<ul>
-		<li ng-repeat="tab in tabs">
-			<a href="#" ng-click="setPageState(tab)">{{tab.name}}</a>
-		</li>
-		</ul>
+	<body>
+<!-- 		<div ng-app="Template" ng-controller="TemplateCtrl">
+			<h1>Systems in Motion Organization Chart: {{heading}}</h1>
+			<ul>
+			<li ng-repeat="tab in tabs">
+				<a href="#" ng-click="setPageState(tab)">{{tab.name}}</a>
+			</li>
+			</ul>
+		</div> -->
+	<div ng-app="JobTitle" ng-controller="JobTitleCtrl" >	
+
+		<table>
+		  <tr ng-repeat="x in JobTitles">
+			<td>{{ x.name }}</td>
+			<td>{{ x.description }}</td>
+		  </tr>
+		</table>
+
+		
+	
+		 <div id="form-title" class="form-title field">
+			  <h2>Add A Job Title</h2>
+		 </div>
+		  
+		  
+		<form role="form" ng-submit="createJobTitle(newJobTitle)" novalidate>
+			<div id="field1-container">
+				<div>
+					<label for="newJobTitleName">Job Title</label>
+					<input type="text" id="newJobTitleName" ng-model="newJobTitle.name" required="required">
+				</div>
+				<div>
+					<label for="newJobTitleDesc">Job Title Description</label>
+					<input type="text" id="newJobTitleDesc" ng-model="newJobTitle.description" required="required">
+				</div>
+				</div>		   
+				<div id="form-submit">
+				<input type="submit" value="Submit">
+			</div>
+
+				<div id="form-cancel">
+				<input type="button" ng-click="cancelCreating()" value="cancel">
+				</div>
+		</form>
+	</div>
+		</div>
 	</body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>	
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+<script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
 <script src="webpages.js"></script>
+<script src="Job Titles.js"></script>
 </html>

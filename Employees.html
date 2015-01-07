@@ -14,20 +14,37 @@
 			</li>
 			</ul>
 		</div> -->
+	
 	<div ng-app="Employee" ng-controller="EmployeeCtrl" >		   
+		<div>
+			<table>
+				<tr ng-repeat="x in parsedEmployeeList track by $index">
+
+				<td>{{ x.firstName }}</td>
+				<td>{{ x.lastName }}</td>
+				<td>{{ x.middleInitial }}</td>
+				<td>{{ x.department.name }}</td>
+				<td>{{ x.email }}</td>
+				<td>{{ x.skype }}</td>
+				<td>{{ x.jobtitle.name }}</td>
+				<td><a href="#" ng-click="deleteEmployee(x)">delete</a></td>
+				<td><a href="#" ng-click="editEmployee(x)">edit</a></td>
+			  </tr>
+			</table>
+		</div>
 		 <div id="form-title" class="form-title field">
 			  <h2>Add An Employee</h2>
 		 </div>
 		  
 		  
-		<form role="form" ng-submit="createEmployee(newEmployee)" novalidate>
+		<form role="form" ng-submit="createEmployee()">
 			<div id="field1-container">
 				<div>
-					<label for="newFirstName">First Name</label>
+					<label for="newFirstName">First Name *</label>
 					<input type="text" id="newFirstName" ng-model="newEmployee.firstName" required="required">
 				</div>
 				<div>
-					<label for="newLastName">Last Name</label>
+					<label for="newLastName">Last Name *</label>
 					<input type="text" id="newLastName" ng-model="newEmployee.lastName" required="required">
 				</div>
 				<div>
@@ -35,26 +52,27 @@
 					<input type="text" id="newMiddleInitial" ng-model="newEmployee.middleInitial" maxlength="1">
 				</div>
 				<div>
-					<label for="newDepartment">Department</label>
-					<select ng-model="newEmployee.department" ng-options="department as department.name for department in departments">
-						<option value="" ng-if="foo">Select Department</option>
+					<label for="newDepartment">Department *</label>
+					<select ng-model="newEmployee.department" ng-options="Department as Department.name for Department in Departments" required>
+						<option value="" ng-if="defaultSelect == true">Select Department</option>
 					</select>
 				</div>
 				<div>
-					<label for="newSkype">Email</label>
+					<label for="newSkype">Email *</label>
 					<input type="text" id="newSkype" ng-model="newEmployee.email" required="required">
 				</div>
 				<div>
-					<label for="newEmail">Skype</label>
+					<label for="newEmail">Skype *</label>
 					<input type="text" id="newEmail" ng-model="newEmployee.skype" required="required">
 				</div>
 				<div>
-					<label for="newJobTitle">Job Title</label>
-					<select ng-model="newEmployee.jobtitle" ng-options="JobTitle as JobTitle.name for JobTitle in JobTitles">
-						<option value="" ng-if="foo">Select Job Title</option>
+					<label for="newJobTitle">Job Title *</label>
+					<select ng-model="newEmployee.jobtitle" ng-options="JobTitle as JobTitle.name for JobTitle in JobTitles" required>
+						<option value="" ng-if="defaultSelect == true">Select Job Title</option>
 					</select>
 				</div>
 				</div>		   
+				<p>Fields marked with * are required</p>
 				<div id="form-submit">
 				<input type="submit" value="Submit">
 			</div>
@@ -63,7 +81,6 @@
 				<input type="button" ng-click="cancelCreating()" value="cancel">
 				</div>
 		</form>
-	</div>
 		
 	</body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>	

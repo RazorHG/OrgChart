@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html ng-app="Template">
-	<head ng-controller="TemplateCtrl">
+<html ng-app="Template" ng-controller="TemplateCtrl">
+	<head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css">
-	<title>Systems in Motion Organization Chart: {{page}}</title>
+	<title ng-bind="'Systems in Motion Organization Chart: ' + page"></title>
 	</head>
-	<body ng-controller="TemplateCtrl">
-		<h1>Systems in Motion Organization Chart: {{heading}}</h1>
+	<body>
+		<h1 ng-bind="'Systems in Motion Organization Chart: ' + heading"></h1>
 		<ul>
 		<li ng-repeat="tab in tabs">
 			<a href="#" ng-click="setPageState(tab)">{{tab.name}}</a>
@@ -18,5 +18,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+<script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
 <script src="webpages.js"></script>
 </html>

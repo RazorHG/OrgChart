@@ -12,11 +12,6 @@ angular.module('JobTitle', [
 		{"id": 1, "name": "Loser", "description": "Zero"},
 	];
 	
-	$scope.departments = [
-		{"id": 0, "name": "Big House"},
-		{"id": 1, "name": "Small House"},
-	];
-	
 	function resetJobTitleForm() {
 		$scope.newJobTitle = {
 			name: '',

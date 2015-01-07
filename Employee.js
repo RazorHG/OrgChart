@@ -7,6 +7,9 @@ angular.module('Employee', [
 	//$scope.$storage.EmployeeList ='[]';
 	$scope.newEmployeeString = '';
 	$scope.parsedEmployeeList = JSON.parse($scope.$storage.EmployeeList);
+	$scope.parsedDepartmentList = JSON.parse($scope.$storage.DepartmentList);
+	$scope.parsedJobTitleList = JSON.parse($scope.$storage.JobTitleList);
+	console.log($scope.parsedDepartmentList);
 	$scope.$session = $sessionStorage;
 	$scope.$session.editEmployee = false;
 	var index;
@@ -20,19 +23,7 @@ angular.module('Employee', [
 						  "skype": '',
 						  "jobtitle": '',
 						  };
-						  
-	
-	
-	$scope.JobTitles = [
-		{"id": 0, "name": "Winner", "description": "Hero"},
-		{"id": 1, "name": "Loser", "description": "Zero"},
-	];
-	
-	$scope.Departments = [
-		{"id": 0, "name": "Big House", "parent": "n/a"},
-		{"id": 1, "name": "Small House", "parent": "Big House"},
-	];
-	
+						
 	
 	function resetEmployeeForm() {
 		$scope.newEmployee = {

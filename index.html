@@ -6,12 +6,22 @@
 	<title ng-bind="'Systems in Motion Organization Chart: ' + page"></title>
 	</head>
 	<body>
-		<h1 ng-bind="'Systems in Motion Organization Chart: ' + heading"></h1>
+		<header>
+			<h1>Systems In Motion Organization Chart: Main Page</h1>
+			<ul class="nav-bar">
+			<li><a href="index.html">Main Page</a></li>
+			<li><a href="Employees.html">Employee Page</a></li>
+			<li><a href="Departments.html">Departments Page</a></li>
+			<li><a href="Job Titles.html">Job Titles Page</a></li>
+			</ul>
+		<div><a href="#">Log In</a></div>
+		</header>
+		<!-- <h1 ng-bind="'Systems in Motion Organization Chart: ' + heading"></h1>
 		<ul>
 		<li ng-repeat="tab in tabs">
-			<a href="#" ng-click="setPageState(tab)">{{tab.name}}</a>
+			<a href={{tab.url}} ng-click="setPageState(tab)">{{tab.name}}</a>
 		</li>
-		</ul>
+		</ul> -->
 	</body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>	
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>

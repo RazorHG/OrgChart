@@ -2,8 +2,9 @@
 <html >
 	<head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
 	<link rel="stylesheet" href="style.css">
-	<title>Systems in Motion Organization Chart: </title>
+	<title>Systems in Motion Organization Chart: Departments Page</title>
 	</head>
 	<body>
 <!-- 		<div ng-app="Template" ng-controller="TemplateCtrl">
@@ -14,43 +15,56 @@
 			</li>
 			</ul>
 		</div> -->
+		
+		<header>
+			<h1>Systems In Motion Organization Chart: Departments Page</h1>
+			<ul class="nav-bar">
+				<li><a href="index.html">Main Page</a></li>
+				<li><a href="Employees.html">Employee Page</a></li>
+				<li><a href="Departments.html">Departments Page</a></li>
+				<li><a href="Job Titles.html">Job Titles Page</a></li>
+			</ul>
+			<div><a href="#">Log In</a></div>
+		</header>
 	<div ng-app="Department" ng-controller="DepartmentCtrl" >	
-
+		<section>
 		<table>
-		  <tr ng-repeat="x in Departments">
-			<td>{{ x.name }}</td>
-			<td>{{ x.parent }}</td>
-		  </tr>
+				<tr ng-repeat="x in parsedDepartmentList track by $index">
+
+				<td>{{ x.name }}</td>
+				<td>{{ x.parent.name }}</td>
+				<td><a href="#" ng-click="deleteDepartment(x)">delete</a></td>
+				<td><a href="#" ng-click="editDepartment(x)">edit</a></td>
+			  </tr>
 		</table>
 
-		
+		</section>
 	
-		 <div id="form-title" class="form-title field">
+		 <aside id="form-title" class="form-title field">
 			  <h2>Add A Department</h2>
-		 </div>
+		 
 		  
 		  
-		<form role="form" ng-submit="createDepartment(newDepartment)" novalidate>
+		<form class="pure-form pure-form-aligned" role="form" ng-submit="createDepartment(newDepartment)" >
 			<div id="field1-container">
-				<div>
-					<label for="newDepartmentName">Department</label>
+				<div class="pure-control-group">
+					<label for="newDepartmentName">Department *</label>
 					<input type="text" id="newDepartmentName" ng-model="newDepartment.name" required="required">
 				</div>
-				<div>
+				<div class="pure-control-group">
 					<label for="newDepartmentParent">Department Parent</label>
-					<select ng-model="newDepartment.parent" ng-options="Department as Department.name for Department in Departments">
-						<option value="" ng-if="foo">Select Department</option>
+					<select ng-model="newDepartment.parent" ng-options="Department.name for Department in parsedDepartmentList track by Department.name">
+						<option value="" ng-if="defaultSelect == true">Select Department</option>
 					</select>
 				</div>
+				<p>Fields marked with * are required</p>
 			</div>		   
-				<div id="form-submit">
-				<input type="submit" value="Submit">
-			</div>
-
-				<div id="form-cancel">
-				<input type="button" ng-click="cancelCreating()" value="cancel">
+				<div class="pure-controls">
+					<input class="pure-button pure-button-primary" type="submit" value="Submit">
+					<input class="pure-button pure-button-primary" type="button" ng-click="cancelCreating()" value="Cancel">
 				</div>
 		</form>
+		</aside>
 	</div>
 		</div>
 	</body>

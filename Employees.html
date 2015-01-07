@@ -2,8 +2,9 @@
 <html >
 	<head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
 	<link rel="stylesheet" href="style.css">
-	<title>Systems in Motion Organization Chart: </title>
+	<title>Systems in Motion Organization Chart: Employee Page</title>
 	</head>
 	<body>
 <!-- 		<div ng-app="Template" ng-controller="TemplateCtrl">
@@ -14,9 +15,19 @@
 			</li>
 			</ul>
 		</div> -->
-	
+	<header>
+		<h1>Systems In Motion Organization Chart: Employee Page</h1>
+		
+		<ul class="nav-bar">
+		<li><a href="index.html">Main Page</a></li>
+		<li><a href="Employees.html">Employee Page</a></li>
+		<li><a href="Departments.html">Departments Page</a></li>
+		<li><a href="Job Titles.html">Job Titles Page</a></li>
+		</ul>
+		<div><a href="#">Log In</a></div>
+	</header>
 	<div ng-app="Employee" ng-controller="EmployeeCtrl" >		   
-		<div>
+		<section>
 			<table>
 				<tr ng-repeat="x in parsedEmployeeList track by $index">
 
@@ -31,57 +42,52 @@
 				<td><a href="#" ng-click="editEmployee(x)">edit</a></td>
 			  </tr>
 			</table>
-		</div>
-		 <div id="form-title" class="form-title field">
+		</section>
+		 <aside id="form-title" class="form-title field">
 			  <h2>Add An Employee</h2>
-		 </div>
-		  
-		  
-		<form role="form" ng-submit="createEmployee()">
+		   
+		<form class="pure-form pure-form-aligned" role="form" ng-submit="createEmployee()">
 			<div id="field1-container">
-				<div>
+				<div class="pure-control-group">
 					<label for="newFirstName">First Name *</label>
 					<input type="text" id="newFirstName" ng-model="newEmployee.firstName" required="required">
 				</div>
-				<div>
+				<div class="pure-control-group">
 					<label for="newLastName">Last Name *</label>
 					<input type="text" id="newLastName" ng-model="newEmployee.lastName" required="required">
 				</div>
-				<div>
+				<div class="pure-control-group">
 					<label for="newMiddleInitial">Middle Initial</label>
 					<input type="text" id="newMiddleInitial" ng-model="newEmployee.middleInitial" maxlength="1">
 				</div>
-				<div>
+				<div class="pure-control-group">
 					<label for="newDepartment">Department *</label>
-					<select ng-model="newEmployee.department" ng-options="Department as Department.name for Department in Departments" required>
+					<select ng-model="newEmployee.department" ng-options="Department.name for Department in parsedDepartmentList track by Department.name" required>
 						<option value="" ng-if="defaultSelect == true">Select Department</option>
 					</select>
 				</div>
-				<div>
+				<div class="pure-control-group">
 					<label for="newSkype">Email *</label>
 					<input type="text" id="newSkype" ng-model="newEmployee.email" required="required">
 				</div>
-				<div>
+				<div class="pure-control-group">
 					<label for="newEmail">Skype *</label>
 					<input type="text" id="newEmail" ng-model="newEmployee.skype" required="required">
 				</div>
-				<div>
+				<div class="pure-control-group">
 					<label for="newJobTitle">Job Title *</label>
-					<select ng-model="newEmployee.jobtitle" ng-options="JobTitle as JobTitle.name for JobTitle in JobTitles" required>
+					<select ng-model="newEmployee.jobtitle" ng-options="JobTitle.name for JobTitle in parsedJobTitleList track by JobTitle.name" required>
 						<option value="" ng-if="defaultSelect == true">Select Job Title</option>
 					</select>
+					<p>Fields marked with * are required</p>
 				</div>
-				</div>		   
-				<p>Fields marked with * are required</p>
-				<div id="form-submit">
-				<input type="submit" value="Submit">
-			</div>
-
-				<div id="form-cancel">
-				<input type="button" ng-click="cancelCreating()" value="cancel">
+				</div>	
+				<div class="pure-controls">
+					<input class="pure-button pure-button-primary" type="submit" value="Submit">
+					<input class="pure-button pure-button-primary" type="button" ng-click="cancelCreating()" value="Cancel">
 				</div>
 		</form>
-		
+		</aside>
 	</body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>	
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
